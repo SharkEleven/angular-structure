@@ -1,0 +1,260 @@
+<html>
+<head>
+	<title>Syteme de commentaires</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+	<script src="https://code.angularjs.org/1.2.27/angular-route.js"></script>
+</head>
+<body ng-app="chatApp">
+
+	<div ng-view></div>
+
+
+	<script type="text/javascript">
+
+		var app = angular.module('chatApp', ['ngRoute']);
+	
+//config		
+			app.config( function($routeProvider) {
+				$routeProvider
+					.when('/', { templateUrl: 'partials/home.html', controller: 'PostsCtrl' } )
+					.when('/comments/:id', { templateUrl: 'partials/comments.html', controller: 'CommentsCtrl' } )
+					.otherwise({ redirectTo: '/' });
+			});
+
+
+//models
+			app.factory('PostFactory', function() {
+
+				var factory = {
+					posts : [
+					  {
+						"id": 0,
+						"name": "Kneedles",
+						"content": "Deserunt veniam voluptate non mollit voluptate laborum et mollit veniam nisi labore aliqua. Enim aliquip laboris consequat in amet. Sunt adipisicing eu duis proident occaecat dolore occaecat sunt eiusmod cillum qui. Velit aliqua esse ea culpa voluptate. Fugiat aute exercitation culpa minim. Est qui do quis et nisi pariatur elit ut do.",
+						"comments": [
+						  {
+							"username": "Ashley Figueroa",
+							"email": "ashleyfigueroa@kneedles.com",
+							"content": "Ex pariatur ex nisi minim consectetur. Amet anim dolore elit officia culpa irure exercitation irure reprehenderit ea aliqua."
+						  },
+						  {
+							"username": "Rachael Warren",
+							"email": "rachaelwarren@kneedles.com",
+							"content": "Consequat amet pariatur dolor duis duis aliqua non cillum aute veniam duis. Eu culpa cupidatat fugiat fugiat esse."
+						  },
+						  {
+							"username": "Dorothy Roberts",
+							"email": "dorothyroberts@kneedles.com",
+							"content": "Officia consequat ea aliqua tempor amet voluptate tempor amet labore voluptate cupidatat. Ad consectetur do tempor non."
+						  }
+						]
+					  },
+					  {
+						"id": 1,
+						"name": "Quonata",
+						"content": "Eu exercitation mollit duis exercitation pariatur do nulla nostrud deserunt deserunt fugiat qui mollit. Excepteur esse ex consequat irure ut excepteur duis veniam exercitation. Dolore aliquip cillum adipisicing reprehenderit fugiat enim qui. Quis aliquip non est reprehenderit sit ullamco exercitation ipsum sunt sint eu. Aliqua minim aute reprehenderit ad quis eiusmod enim pariatur ea non. Officia mollit ex eu reprehenderit commodo aliqua consectetur officia.",
+						"comments": [
+						  {
+							"username": "English Allison",
+							"email": "englishallison@quonata.com",
+							"content": "Culpa exercitation commodo reprehenderit fugiat ex duis qui excepteur aute Lorem consequat aliquip consequat. Culpa irure id ipsum aute amet est incididunt laboris sunt reprehenderit dolor et labore."
+						  },
+						  {
+							"username": "Lydia Shepard",
+							"email": "lydiashepard@quonata.com",
+							"content": "Do magna est et commodo sunt ullamco eiusmod reprehenderit nulla labore. Consequat velit nostrud duis excepteur et labore anim adipisicing mollit."
+						  }
+						]
+					  },
+					  {
+						"id": 2,
+						"name": "Ewaves",
+						"content": "Laboris veniam culpa non consectetur irure magna. Nisi fugiat Lorem duis quis esse deserunt eu nisi aute nulla. Pariatur minim aute ad fugiat ad excepteur esse nulla consequat. Consequat enim occaecat do anim laboris deserunt eiusmod adipisicing proident nulla aliquip occaecat. Qui sint ipsum anim labore ex elit nisi anim incididunt commodo. Ex dolore ea voluptate nostrud velit.",
+						"comments": [
+						  {
+							"username": "Marian Cain",
+							"email": "mariancain@ewaves.com",
+							"content": "Do irure laboris cupidatat tempor ullamco tempor magna sunt esse enim. Duis nulla cupidatat commodo et et ea adipisicing sunt."
+						  },
+						  {
+							"username": "Estela Cummings",
+							"email": "estelacummings@ewaves.com",
+							"content": "Consectetur cillum cillum magna irure. Excepteur amet elit eu exercitation proident adipisicing ipsum enim."
+						  },
+						  {
+							"username": "Jacqueline Lowe",
+							"email": "jacquelinelowe@ewaves.com",
+							"content": "Velit excepteur dolor sint culpa. Sit laborum irure consequat dolore exercitation et voluptate minim."
+						  }
+						]
+					  },
+					  {
+						"id": 3,
+						"name": "Centice",
+						"content": "Velit duis commodo voluptate ullamco labore Lorem ea minim qui mollit Lorem eu amet deserunt. Voluptate aliqua eiusmod exercitation aliquip cupidatat veniam excepteur amet nostrud ipsum tempor aliqua reprehenderit fugiat. Excepteur tempor id consequat ad magna in ullamco cupidatat culpa anim in mollit est aute. Do magna quis ipsum anim ex laborum laborum. Laborum culpa reprehenderit deserunt sunt. Reprehenderit irure laboris sunt esse nisi irure non consectetur ipsum anim esse sit aliquip.",
+						"comments": [
+						  {
+							"username": "Pollard Pope",
+							"email": "pollardpope@centice.com",
+							"content": "Duis eu irure cupidatat ullamco excepteur sunt magna deserunt do ut id mollit quis sunt. Ad laborum cupidatat nostrud ut sint cupidatat eiusmod mollit irure in consequat."
+						  }
+						]
+					  },
+					  {
+						"id": 4,
+						"name": "Comtent",
+						"content": "Ipsum pariatur id sunt eu sit eu. Ipsum et sint irure amet enim minim aute Lorem cupidatat ullamco. Veniam reprehenderit sunt aliquip in ipsum labore. Consequat cupidatat incididunt ut occaecat dolor laborum aliqua mollit. Eiusmod tempor irure aliqua veniam non exercitation esse fugiat mollit. Eu nulla pariatur sint aliqua irure ullamco minim magna do anim exercitation ullamco non cillum.",
+						"comments": [
+						  {
+							"username": "Betty Hancock",
+							"email": "bettyhancock@comtent.com",
+							"content": "Velit id amet anim esse occaecat sunt aliqua id irure nisi laboris elit nisi quis. Enim cupidatat et ea laboris cupidatat."
+						  }
+						]
+					  }
+					],
+					getPosts: function() {
+						return factory.posts;
+					},
+					getPost: function(id) {
+						var post = {};
+						angular.forEach( factory.posts, function(value, key) {
+							if( value.id == id ) {
+								post = value;
+							}
+						} );
+						return post;
+					}
+
+				}
+
+				return factory;
+			} );
+
+
+			//transformation du factory précédent en service
+			app.service('PostService', function() {
+
+				that = this;
+				that.posts = [
+				  {
+					"id": 0,
+					"name": "Kneedles",
+					"content": "Deserunt veniam voluptate non mollit voluptate laborum et mollit veniam nisi labore aliqua. Enim aliquip laboris consequat in amet. Sunt adipisicing eu duis proident occaecat dolore occaecat sunt eiusmod cillum qui. Velit aliqua esse ea culpa voluptate. Fugiat aute exercitation culpa minim. Est qui do quis et nisi pariatur elit ut do.",
+					"comments": [
+					  {
+						"username": "Ashley Figueroa",
+						"email": "ashleyfigueroa@kneedles.com",
+						"content": "Ex pariatur ex nisi minim consectetur. Amet anim dolore elit officia culpa irure exercitation irure reprehenderit ea aliqua."
+					  },
+					  {
+						"username": "Rachael Warren",
+						"email": "rachaelwarren@kneedles.com",
+						"content": "Consequat amet pariatur dolor duis duis aliqua non cillum aute veniam duis. Eu culpa cupidatat fugiat fugiat esse."
+					  },
+					  {
+						"username": "Dorothy Roberts",
+						"email": "dorothyroberts@kneedles.com",
+						"content": "Officia consequat ea aliqua tempor amet voluptate tempor amet labore voluptate cupidatat. Ad consectetur do tempor non."
+					  }
+					]
+				  },
+				  {
+					"id": 1,
+					"name": "Quonata",
+					"content": "Eu exercitation mollit duis exercitation pariatur do nulla nostrud deserunt deserunt fugiat qui mollit. Excepteur esse ex consequat irure ut excepteur duis veniam exercitation. Dolore aliquip cillum adipisicing reprehenderit fugiat enim qui. Quis aliquip non est reprehenderit sit ullamco exercitation ipsum sunt sint eu. Aliqua minim aute reprehenderit ad quis eiusmod enim pariatur ea non. Officia mollit ex eu reprehenderit commodo aliqua consectetur officia.",
+					"comments": [
+					  {
+						"username": "English Allison",
+						"email": "englishallison@quonata.com",
+						"content": "Culpa exercitation commodo reprehenderit fugiat ex duis qui excepteur aute Lorem consequat aliquip consequat. Culpa irure id ipsum aute amet est incididunt laboris sunt reprehenderit dolor et labore."
+					  },
+					  {
+						"username": "Lydia Shepard",
+						"email": "lydiashepard@quonata.com",
+						"content": "Do magna est et commodo sunt ullamco eiusmod reprehenderit nulla labore. Consequat velit nostrud duis excepteur et labore anim adipisicing mollit."
+					  }
+					]
+				  },
+				  {
+					"id": 2,
+					"name": "Ewaves",
+					"content": "Laboris veniam culpa non consectetur irure magna. Nisi fugiat Lorem duis quis esse deserunt eu nisi aute nulla. Pariatur minim aute ad fugiat ad excepteur esse nulla consequat. Consequat enim occaecat do anim laboris deserunt eiusmod adipisicing proident nulla aliquip occaecat. Qui sint ipsum anim labore ex elit nisi anim incididunt commodo. Ex dolore ea voluptate nostrud velit.",
+					"comments": [
+					  {
+						"username": "Marian Cain",
+						"email": "mariancain@ewaves.com",
+						"content": "Do irure laboris cupidatat tempor ullamco tempor magna sunt esse enim. Duis nulla cupidatat commodo et et ea adipisicing sunt."
+					  },
+					  {
+						"username": "Estela Cummings",
+						"email": "estelacummings@ewaves.com",
+						"content": "Consectetur cillum cillum magna irure. Excepteur amet elit eu exercitation proident adipisicing ipsum enim."
+					  },
+					  {
+						"username": "Jacqueline Lowe",
+						"email": "jacquelinelowe@ewaves.com",
+						"content": "Velit excepteur dolor sint culpa. Sit laborum irure consequat dolore exercitation et voluptate minim."
+					  }
+					]
+				  },
+				  {
+					"id": 3,
+					"name": "Centice",
+					"content": "Velit duis commodo voluptate ullamco labore Lorem ea minim qui mollit Lorem eu amet deserunt. Voluptate aliqua eiusmod exercitation aliquip cupidatat veniam excepteur amet nostrud ipsum tempor aliqua reprehenderit fugiat. Excepteur tempor id consequat ad magna in ullamco cupidatat culpa anim in mollit est aute. Do magna quis ipsum anim ex laborum laborum. Laborum culpa reprehenderit deserunt sunt. Reprehenderit irure laboris sunt esse nisi irure non consectetur ipsum anim esse sit aliquip.",
+					"comments": [
+					  {
+						"username": "Pollard Pope",
+						"email": "pollardpope@centice.com",
+						"content": "Duis eu irure cupidatat ullamco excepteur sunt magna deserunt do ut id mollit quis sunt. Ad laborum cupidatat nostrud ut sint cupidatat eiusmod mollit irure in consequat."
+					  }
+					]
+				  },
+				  {
+					"id": 4,
+					"name": "Comtent",
+					"content": "Ipsum pariatur id sunt eu sit eu. Ipsum et sint irure amet enim minim aute Lorem cupidatat ullamco. Veniam reprehenderit sunt aliquip in ipsum labore. Consequat cupidatat incididunt ut occaecat dolor laborum aliqua mollit. Eiusmod tempor irure aliqua veniam non exercitation esse fugiat mollit. Eu nulla pariatur sint aliqua irure ullamco minim magna do anim exercitation ullamco non cillum.",
+					"comments": [
+					  {
+						"username": "Betty Hancock",
+						"email": "bettyhancock@comtent.com",
+						"content": "Velit id amet anim esse occaecat sunt aliqua id irure nisi laboris elit nisi quis. Enim cupidatat et ea laboris cupidatat."
+					  }
+					]
+				  }
+				];
+
+				that.getPosts = function() {
+					return that.posts;
+				};
+
+				that.getPost = function(id) {
+					var post = {};
+					angular.forEach( that.posts, function(value, key) {
+						if( value.id == id ) {
+							post = value;
+						}
+					} );
+					return post;
+				}
+
+			} );
+
+
+//controllers
+			app.controller( 'PostsCtrl', function($scope, PostFactory) {
+				$scope.posts = PostFactory.getPosts();
+			}  );
+
+			app.controller( 'CommentsCtrl', function($scope, PostFactory, $routeParams) {
+				var post = PostFactory.getPost($routeParams.id);
+				$scope.title = post.name;
+				$scope.comments = post.comments;
+			} );
+
+
+	</script>
+	
+
+</body>
+</html>
